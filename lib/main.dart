@@ -1,11 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'core/di/dependency_injection.dart';
 import 'core/theme/app_theme.dart';
+import 'features/auth/presentation/cubits/login/login_cubit.dart';
+import 'features/auth/presentation/cubits/register/register_cubit.dart';
+import 'features/auth/presentation/pages/login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await setupGetIt();
 
   runApp(
     EasyLocalization(
@@ -27,59 +33,24 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
-          title: 'Fusion News & Weather',
-          debugShowCheckedModeBanner: false,
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
-          themeMode: ThemeMode.system,
-          home: const SplashScreen(),
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (_) => getIt<LoginCubit>()),
+            BlocProvider(create: (_) => getIt<RegisterCubit>()),
+          ],
+          child: MaterialApp(
+            title: 'Fusion News & Weather',
+            debugShowCheckedModeBanner: false,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: ThemeMode.system,
+            home: const LoginPage(),
+          ),
         );
       },
-    );
-  }
-}
-
-class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.newspaper,
-              size: 100.sp,
-              color: Theme.of(context).colorScheme.primary,
-            ),
-            SizedBox(height: 24.h),
-            Text(
-              'app_name'.tr(),
-              style: TextStyle(
-                fontSize: 28.sp,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).colorScheme.primary,
-              ),
-            ),
-            SizedBox(height: 16.h),
-            Text(
-              'Building amazing features...',
-              style: TextStyle(
-                fontSize: 16.sp,
-                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
-              ),
-            ),
-            SizedBox(height: 32.h),
-            const CircularProgressIndicator(),
-          ],
-        ),
-      ),
     );
   }
 }
