@@ -7,6 +7,9 @@ import 'core/theme/app_theme.dart';
 import 'features/auth/presentation/cubits/login/login_cubit.dart';
 import 'features/auth/presentation/cubits/register/register_cubit.dart';
 import 'features/auth/presentation/pages/login_page.dart';
+import 'features/home/presentation/pages/home_page.dart';
+import 'features/news/presentation/cubits/news_cubit.dart';
+import 'features/weather/presentation/cubits/weather_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,6 +40,8 @@ class MyApp extends StatelessWidget {
           providers: [
             BlocProvider(create: (_) => getIt<LoginCubit>()),
             BlocProvider(create: (_) => getIt<RegisterCubit>()),
+            BlocProvider(create: (_) => getIt<NewsCubit>()),
+            BlocProvider(create: (_) => getIt<WeatherCubit>()),
           ],
           child: MaterialApp(
             title: 'Fusion News & Weather',
@@ -47,7 +52,11 @@ class MyApp extends StatelessWidget {
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
             themeMode: ThemeMode.system,
-            home: const LoginPage(),
+            home: const HomePage(), // Changed to HomePage
+            routes: {
+              '/login': (context) => const LoginPage(),
+              '/home': (context) => const HomePage(),
+            },
           ),
         );
       },
