@@ -26,7 +26,7 @@ class AppTheme {
         foregroundColor: AppColors.lightOnPrimary,
         iconTheme: IconThemeData(color: AppColors.lightOnPrimary),
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         elevation: 2,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
