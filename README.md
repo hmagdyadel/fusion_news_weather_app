@@ -197,10 +197,10 @@ genhtml coverage/lcov.info -o coverage/html
 | Core Infrastructure | ✅ Complete | 100% |
 | Authentication | ✅ Complete | 100% |
 | News Feature | ✅ Complete | 100% |
-| Weather Feature | 🔄 In Progress | 15% |
+| Weather Feature | 🔄 In Progress | 60% |
 | Home Dashboard | ⏳ Pending | 0% |
 | Testing | ⏳ Pending | 0% |
-| **Overall** | **🔄 In Progress** | **55%** |
+| **Overall** | **🔄 In Progress** | **65%** |
 
 ## 🎓 Learning Objectives
 
