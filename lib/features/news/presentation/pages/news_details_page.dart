@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import '../../../domain/entities/news_article_entity.dart';
+import '../../domain/entities/news_article_entity.dart';
 
 class NewsDetailsPage extends StatefulWidget {
   final NewsArticleEntity article;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:ui' as ui;
 import 'package:intl/intl.dart';
 import '../../domain/entities/weather_entities.dart';
 
@@ -88,7 +89,7 @@ class _TemperatureChartPainter extends CustomPainter {
       ..style = PaintingStyle.fill;
 
     final textPainter = TextPainter(
-      textDirection: TextDirection.ltr,
+      textDirection: ui.TextDirection.ltr,
     );
 
     for (int i = 0; i < points.length; i++) {

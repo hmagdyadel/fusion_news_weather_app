@@ -396,13 +396,13 @@ class __$$SuccessImplCopyWithImpl<T, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? weather = freezed,
+    Object? weather = null,
     Object? forecasts = null,
-    Object? city = freezed,
+    Object? city = null,
   }) {
     return _then(
       _$SuccessImpl<T>(
-        weather: freezed == weather
+        weather: null == weather
             ? _value.weather
             : weather // ignore: cast_nullable_to_non_nullable
                   as WeatherEntity,
@@ -410,7 +410,7 @@ class __$$SuccessImplCopyWithImpl<T, $Res>
             ? _value._forecasts
             : forecasts // ignore: cast_nullable_to_non_nullable
                   as List<ForecastEntity>,
-        city: freezed == city
+        city: null == city
             ? _value.city
             : city // ignore: cast_nullable_to_non_nullable
                   as CityEntity,
@@ -451,20 +451,20 @@ class _$SuccessImpl<T> implements Success<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl<T> &&
-            const DeepCollectionEquality().equals(other.weather, weather) &&
+            (identical(other.weather, weather) || other.weather == weather) &&
             const DeepCollectionEquality().equals(
               other._forecasts,
               _forecasts,
             ) &&
-            const DeepCollectionEquality().equals(other.city, city));
+            (identical(other.city, city) || other.city == city));
   }
 
   @override
   int get hashCode => Object.hash(
     runtimeType,
-    const DeepCollectionEquality().hash(weather),
+    weather,
     const DeepCollectionEquality().hash(_forecasts),
-    const DeepCollectionEquality().hash(city),
+    city,
   );
 
   /// Create a copy of WeatherStates

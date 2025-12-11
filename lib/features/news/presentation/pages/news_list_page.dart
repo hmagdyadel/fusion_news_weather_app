@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import '../../cubits/news_cubit.dart';
-import '../../cubits/news_states.dart';
-import '../../../domain/entities/news_article_entity.dart';
+import 'package:fusion_news_weather_app/features/news/presentation/cubits/news_cubit.dart';
+import 'package:fusion_news_weather_app/features/news/presentation/cubits/news_states.dart';
+import '../../domain/entities/news_article_entity.dart';
 import 'news_details_page.dart';
 
 class NewsListPage extends StatefulWidget {

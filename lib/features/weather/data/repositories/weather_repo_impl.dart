@@ -7,6 +7,7 @@ import '../../domain/entities/weather_entities.dart';
 import '../../domain/repositories/weather_repo.dart';
 import '../datasources/weather_local_datasource.dart';
 import '../datasources/weather_remote_datasource.dart';
+import '../models/weather_models.dart';
 
 class WeatherRepoImpl implements WeatherRepo {
   final WeatherRemoteDatasource remoteDatasource;
