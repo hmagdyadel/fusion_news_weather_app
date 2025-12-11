@@ -240,11 +240,11 @@ class _NewsCard extends StatelessWidget {
                     width: 100.w,
                     height: 100.h,
                     fit: BoxFit.cover,
-                    placeholder: (_, __) => Container(
+                    placeholder: (_, _) => Container(
                       color: Colors.grey[300],
                       child: const Center(child: CircularProgressIndicator()),
                     ),
-                    errorWidget: (_, __, ___) => Container(
+                    errorWidget: (_, _, _) => Container(
                       color: Colors.grey[300],
                       child: const Icon(Icons.error),
                     ),

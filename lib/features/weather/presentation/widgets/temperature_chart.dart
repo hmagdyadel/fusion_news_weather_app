@@ -43,7 +43,7 @@ class _TemperatureChartPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round;
 
     final fillPaint = Paint()
-      ..color = primaryColor.withOpacity(0.2)
+      ..color = primaryColor.withValues(alpha: 0.2)
       ..style = PaintingStyle.fill;
 
     // Find min and max temperatures
@@ -112,7 +112,7 @@ class _TemperatureChartPainter extends CustomPainter {
         final time = DateFormat.Hm().format(forecasts[i].dateTime);
         textPainter.text = TextSpan(
           text: time,
-          style: TextStyle(color: textColor.withOpacity(0.6), fontSize: 10),
+          style: TextStyle(color: textColor.withValues(alpha: 0.6), fontSize: 10),
         );
         textPainter.layout();
         textPainter.paint(
