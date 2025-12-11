@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/helpers/logging_service.dart';
 import '../../../../core/network/network_info.dart';
-import '../../../../core/usecases/usecase.dart';
 import '../../domain/entities/news_article_entity.dart';
 import '../../domain/usecases/get_cached_news_usecase.dart';
 import '../../domain/usecases/get_top_headlines_usecase.dart';

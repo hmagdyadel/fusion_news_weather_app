@@ -1,7 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/di/dependency_injection.dart';
+import '../../../news/presentation/cubits/news_cubit.dart';
 import '../../../news/presentation/pages/news_list_page.dart';
+import '../../../weather/presentation/cubits/weather_cubit.dart';
 import '../../../weather/presentation/pages/weather_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,10 +18,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
-  final List<Widget> _pages = const [
-    NewsListPage(),
-    WeatherPage(),
-    ProfilePage(),
+  final List<Widget> _pages = [
+    BlocProvider(
+      create: (_) => getIt<NewsCubit>()..fetchTopHeadlines(),
+      child: const NewsListPage(),
+    ),
+    BlocProvider(
+      create: (_) => getIt<WeatherCubit>(),
+      child: const WeatherPage(),
+    ),
+    const ProfilePage(),
   ];
 
   @override

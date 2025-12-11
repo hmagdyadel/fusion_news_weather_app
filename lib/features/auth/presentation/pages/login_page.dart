@@ -2,8 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/di/dependency_injection.dart';
 import '../cubits/login/login_cubit.dart';
 import '../cubits/login/login_states.dart';
+import '../cubits/register/register_cubit.dart';
 import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -162,7 +164,10 @@ class _LoginPageState extends State<LoginPage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (_) => const RegisterPage(),
+                                    builder: (_) => BlocProvider(
+                                      create: (_) => getIt<RegisterCubit>(),
+                                      child: const RegisterPage(),
+                                    ),
                                   ),
                                 );
                               },

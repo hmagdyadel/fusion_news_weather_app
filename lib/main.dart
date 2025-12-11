@@ -5,11 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/di/dependency_injection.dart';
 import 'core/theme/app_theme.dart';
 import 'features/auth/presentation/cubits/login/login_cubit.dart';
-import 'features/auth/presentation/cubits/register/register_cubit.dart';
 import 'features/auth/presentation/pages/login_page.dart';
 import 'features/home/presentation/pages/home_page.dart';
-import 'features/news/presentation/cubits/news_cubit.dart';
-import 'features/weather/presentation/cubits/weather_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,14 +33,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MultiBlocProvider(
-          providers: [
-            BlocProvider(create: (_) => getIt<LoginCubit>()),
-            BlocProvider(create: (_) => getIt<RegisterCubit>()),
-            BlocProvider(create: (_) => getIt<NewsCubit>()),
-            BlocProvider(create: (_) => getIt<WeatherCubit>()),
-          ],
-          child: MaterialApp(
+        return MaterialApp(
             title: 'Fusion News & Weather',
             debugShowCheckedModeBanner: false,
             localizationsDelegates: context.localizationDelegates,
@@ -52,13 +42,15 @@ class MyApp extends StatelessWidget {
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
             themeMode: ThemeMode.system,
-            home: const HomePage(), // Changed to HomePage
+            home: const HomePage(),
             routes: {
-              '/login': (context) => const LoginPage(),
+              '/login': (context) => BlocProvider(
+                    create: (_) => getIt<LoginCubit>(),
+                    child: const LoginPage(),
+                  ),
               '/home': (context) => const HomePage(),
             },
-          ),
-        );
+          );
       },
     );
   }
